@@ -1,24 +1,22 @@
-package posttest4;
+package posttest5;
 
-public class Novel {
+abstract class Novel {
     private String Judul;
     private String Penulis;
-    private String Penerbit;
+    private final String Penerbit = "Gramedia"; //asumsikan semua Penerbit Novel dari Gramedia
     private int Halaman;
     private int Tahun;
     
-    public Novel(){
-    }
+    public Novel(){}
 
-    public Novel(String Judul, String Penulis, String Penerbit, int Halaman, int Tahun) {
+    public Novel(String Judul, String Penulis, int Halaman, int Tahun) {
         this.Judul = Judul;
         this.Penulis = Penulis;
-        this.Penerbit = Penerbit;
         this.Halaman = Halaman;
         this.Tahun = Tahun;
     }
     
-    public void showNovel() {
+    public final void showNovel() {
         System.out.println("Novel Masa Kini... ");
         System.out.println("Nama Novel : "+Judul);
         System.out.println("Penulis    : "+Penulis);
@@ -26,16 +24,6 @@ public class Novel {
         System.out.println("Tahun      : "+Tahun);
         System.out.println("Halaman    : "+Halaman);
     }
-    
-    public void showNovel(String Judul){
-        System.out.println(Judul+" Novel Masa Jadul... ");
-        System.out.println("Nama Novel : "+Judul);
-        System.out.println("Penulis    : "+Penulis);
-        System.out.println("Penerbit   : "+Penerbit);
-        System.out.println("Tahun      : "+Tahun);
-        System.out.println("Halaman    : "+Halaman);
-    }
-    
    
     public String getJudul() {
         return Judul;
@@ -57,9 +45,9 @@ public class Novel {
         return Penerbit;
     }
 
-    public void setPenerbit(String Penerbit) {
-        this.Penerbit = Penerbit;
-    }
+//    public void setPenerbit(String Penerbit) {
+//        this.Penerbit = Penerbit;
+//    }
 
     public int getHalaman() {
         return Halaman;
