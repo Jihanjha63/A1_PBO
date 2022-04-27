@@ -13,7 +13,7 @@ public class Main {
     }
     
     public static void main(String[] args){
-        ArrayList<Novel> novel = new ArrayList<Novel>();
+        ArrayList<Novel> novel = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         int menu, index;
         String Judul = null;
@@ -42,7 +42,7 @@ public class Main {
             
             switch(menu){
                 case 1:{
-                    Novel terbaru = new Novel();
+                    NovelJadul terbaru = new NovelJadul();
                     
                     System.out.println("Input Data Baru Novel Jadul");
                     System.out.println("---------------------");
@@ -51,9 +51,6 @@ public class Main {
                     
                     System.out.print("Masukkan Nama Penulis : ");
                     terbaru.setPenulis(input.nextLine());
-                    
-                    System.out.print("Masukkan Nama Penerbit : ");
-                    terbaru.setPenerbit(input.nextLine());
                     
                     System.out.print("Masukkan Jumlah Halaman : ");
                     terbaru.setHalaman(Integer.parseInt(input.nextLine()));
@@ -74,14 +71,22 @@ public class Main {
                 case 2: {
                     System.out.println("Lihat List Novel Jadul");
                     System.out.println("---------------------");
+                    boolean flag = false;
                     if(novel.size() != 0){
                         for(int i=0; i<novel.size(); i++){
-                            System.out.println("[Novel "+(i+1)+"]");
-                            novel.get(i).showNovel(Judul);
-                        
-                            if(i < novel.size()-1){
-                                System.out.println("");
+                            if(novel.get(i).getClass() == NovelJadul.class){
+                                System.out.println("[Novel "+(i+1)+"]");                        
+                                NovelJadul jadul = (NovelJadul) novel.get(i);
+                                jadul.showNovel(Judul);
+                                if(i < novel.size()-1){
+                                    System.out.println("");
+                                }
+                                flag = true;
                             }
+                        }
+                        
+                        if(!flag){
+                            System.out.println("Tidak ada List Novel di Novel Jadul");
                         }
                     }else{
                         System.out.println("Tidak ada List Novel di Novel Jadul");
@@ -98,15 +103,12 @@ public class Main {
                         
                         index = isJudulExist(novel, Judul);
                         if(index != -1){
-                            Novel terbaru = new Novel();
+                            NovelJadul terbaru = new NovelJadul();
                             System.out.print("Masukkan Nama Novel Terbaru : ");
                             terbaru.setJudul(input.nextLine());
 
                             System.out.print("Masukkan Nama Penulis Terbaru : ");
                             terbaru.setPenulis(input.nextLine());
-
-                            System.out.print("Masukkan Nama Penerbit Terbaru : ");
-                            terbaru.setPenerbit(input.nextLine());
 
                             System.out.print("Masukkan Jumlah Halaman Terbaru : ");
                             terbaru.setHalaman(Integer.parseInt(input.nextLine()));
@@ -146,7 +148,7 @@ public class Main {
                 }
                 
                 case 5:{
-                    Novel baru = new Novel();
+                    NovelKini baru = new NovelKini();
                     
                     System.out.println("Input Data Baru Novel Kini");
                     System.out.println("---------------------");
@@ -155,9 +157,6 @@ public class Main {
                     
                     System.out.print("Masukkan Nama Penulis : ");
                     baru.setPenulis(input.nextLine());
-                    
-                    System.out.print("Masukkan Nama Penerbit : ");
-                    baru.setPenerbit(input.nextLine());
                     
                     System.out.print("Masukkan Jumlah Halaman : ");
                     baru.setHalaman(Integer.parseInt(input.nextLine()));
@@ -178,14 +177,24 @@ public class Main {
                 case 6:{
                     System.out.println("Lihat List Novel Kini");
                     System.out.println("---------------------");
+                    boolean flag = false;
                     if(novel.size() != 0){
                         for(int i=0; i<novel.size(); i++){
-                            System.out.println("[Novel "+(i+1)+"]");
-                            novel.get(i).showNovel();
-                            
-                            if(i < novel.size()-1){
-                                System.out.println("");
+                            if(novel.get(i).getClass() == NovelKini.class){
+                                System.out.println("[Novel "+(i+1)+"]");
+                                NovelKini kini = (NovelKini) novel.get(i);
+                                kini.showNovel();
+                                
+                                if(i < novel.size()-1){
+                                    System.out.println("");
+                                }
+                                
+                                flag = true;
                             }
+                        }
+                        
+                        if(!flag){
+                            System.out.println("Tidak ada List Novel di Novel Kini");
                         }
                     }else{
                         System.out.println("Tidak ada List Novel di Novel Kini");
@@ -202,15 +211,12 @@ public class Main {
                         
                         index = isJudulExist(novel, Judul);
                         if(index != -1){
-                            Novel baru = new Novel();
+                            NovelKini baru = new NovelKini();
                             System.out.print("Masukkan Nama Novel Terbaru : ");
                             baru.setJudul(input.nextLine());
 
                             System.out.print("Masukkan Nama Penulis Terbaru : ");
                             baru.setPenulis(input.nextLine());
-
-                            System.out.print("Masukkan Nama Penerbit Terbaru : ");
-                            baru.setPenerbit(input.nextLine());
 
                             System.out.print("Masukkan Jumlah Halaman Terbaru : ");
                             baru.setHalaman(Integer.parseInt(input.nextLine()));
